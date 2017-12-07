@@ -7,6 +7,7 @@ import java.util.Random;
 /**
  * Generates the test data for a MySQL NDB Cluster like in the master's thesis of Kevin Klugmann.
  * For an explanation of the test scenario have a look at page 11 of the thesis.
+ * The setup of the MySQL NDB Cluster starts at the page 35 of the thesis.
  * <p>
  * This generator will create a MySQL script with INSERT statements for the MySQL NDB Cluster.
  * It will be saved in the resources folder of this project.
@@ -16,6 +17,8 @@ import java.util.Random;
  * big amount of values. If you want to use a batch statement you have to rewrite the code.
  * <p>
  * The test scenario is with 4 timeseries (see page 15 in thesis) so 4 sql scripts will be generated.
+ *
+ * Have fun you guys!! Hope my thesis helps you! Keep me posted with your results, that would be really great :)
  *
  * @author Kevin Klugmann
  */
