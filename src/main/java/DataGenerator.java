@@ -25,8 +25,6 @@ public class DataGenerator {
     private final String START_OF_SQL_FILENAME = "script";
     private final String ENDING_OF_SQL_FILENAME = ".sql";
 
-
-    private final long MILLIS_PER_YEAR = 12;
     private final Duration OVERALL_TIMESPAN_IN_DAYS = Duration.standardDays(365);
     private final Duration INTERVALL_TIMESPAN_IN_MINUTES = Duration.standardMinutes(15L);
     private final DateTime START_DATE = DateTime.now().withTimeAtStartOfDay();
@@ -40,13 +38,16 @@ public class DataGenerator {
     // Choose out of the four test scenarios above
     private final long USED_TEST_SCENARIO_GRID = VALUES_PER_INTERVALL_TEST_CASE_1;
 
-    private final String USE_ONE_INSERT_FOR_EACH_VALUE = "each_value";
 
     private final double VALUE_FACTOR = 0.1;
     private final double START_VALUE = 0;
     // Just a random insert timestamp
     private final long INSERT_TS = 1497009245751l;
 
+
+    public static void main(String... args) {
+        new DataGenerator();
+    }
 
     public DataGenerator() {
         startGeneratingData();
@@ -57,7 +58,7 @@ public class DataGenerator {
             for (int i = 1; i <= 4; i++) {
                 String path = PATH_FOR_SCRIPTS + START_OF_SQL_FILENAME + Integer.toString(i) + ENDING_OF_SQL_FILENAME;
                 FileWriter fw = new FileWriter(path,
-                        true);
+                        false);
                 // Just a random String with 128 characters. That's what I used in my thesis (look at page 20 UUID table 3.5)
                 String token = generateRandomString(128);
                 generateValuesFixTimeSpanFile(fw, token);
@@ -111,9 +112,5 @@ public class DataGenerator {
             salt.append(SALTCHARS.charAt(index));
         }
         return salt.toString();
-    }
-
-    public static void main(String... args) {
-        new DataGenerator();
     }
 }
